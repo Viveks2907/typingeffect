@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Effect</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #6969ee, #3b3b58);
+      background-size: 400% 400%;
+      animation: gradient 8s ease infinite;
+      color: #dcdcdc;
+      font-family: 'Fira Code', monospace;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      display: flex;
+      background: #282c34;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      width: 400px;
+      height: 500px;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container img {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 15px;
+      border: 3px solid #dcdcdc;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .container p {
+      color: #f0f0f0;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      margin: 10px 0;
+      letter-spacing: 1px;
+    }
+
+    .code-container {
+      font-size: 16px;
+      line-height: 1.6;
+      overflow: auto;
+      text-align: left;
+      width: 100%;
+      background: #1e1e2f;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.5);
+      height: 100%;
+    }
+
+    .cursor {
+      display: inline-block;
+      background: #dcdcdc;
+      width: 8px;
+      height: 18px;
+      margin-left: 2px;
+      animation: blink 0.7s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        background: transparent;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        width: 90%;
+        height: auto;
+        padding: 15px;
+      }
+
+      .container img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .code-container {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="p.avif" alt="profile">
+    <p>Code Snapshot</p>
+    <div class="code-container">
+      <pre id="code"></pre><span class="cursor"></span>
+    </div>
+  </div>
+
+  <script>
+    const code = `
+    HELLO, IT'S SNIPPET WIZARD 
+    ..........................
+    "Keep chasing your dreams, one line of
+    code at a time. 💻✨
+    #CodeLife #DreamBig"
+    --------------------------
+    INSTA: snippetwizard
+    GITHUB: SnippetxWizard
+    MAIL: snippetwizard@gmail.com
+    `;
+
+    const codeElement = document.getElementById('code');
+    let index = 0;
+
+    function typeEffect() {
+      if (index < code.length) {
+        codeElement.textContent += code[index];
+        index++;
+        setTimeout(typeEffect, 50); // ider se speed jada or kum kar sakte ho
+      }
+    }
+
+    typeEffect();
+  </script>
+</body>
+</html>
